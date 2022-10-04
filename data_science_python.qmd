@@ -1,0 +1,130 @@
+---
+title: "Data Science in Python"
+author: "Tural Sadigov"
+#date: today
+jupyter: python3
+#engine: knitr
+format: 
+    html:
+      theme: 
+        light: united
+        dark: darkly
+editor: visual
+chunk_output_type: console
+fig-align: center
+always_allow_html: true
+toc: true
+toc-location: right
+number-sections: true
+page-layout: article
+code-overflow: scroll
+code-line-numbers: false
+code-copy: true
+execute:
+  echo: true
+  warning: false
+  eval: true
+  output: true
+  error: false
+  freeze: true
+  out.width: "100%"
+  cache: false
+---
+
+## set up
+
+```{python}
+import matplotlib.pyplot as plt
+import seaborn as sns
+import numpy as np
+import pandas as pd
+sns.set_style('white')
+
+```
+
+## data
+
+```{python}
+df = sns.load_dataset('diamonds')
+df
+```
+
+## dplyr to pandas translation
+
+-   dplyr --\> pandas
+
+-   mutate --\> assign
+
+-   select --\> filter (the most confusing one)
+
+-   rename --\> rename
+
+-   filter --\> query
+
+-   arrange --\> sort_values
+
+-   group_by --\> groupby
+
+-   summarize --\> agg
+
+## piping in pandas
+
+EXAMPLE 1:
+
+Compare to dplyr
+
+```{r}
+#| message: false
+library(tidyverse)
+diamonds %>% 
+  select(carat, color) %>% 
+  filter(color == 'E') %>% 
+  head(3)
+```
+
+```{python}
+df.filter(['carat', 'color']).query('color == "E"').head(3)
+```
+
+OR, we can wrap it around parenthesis to go over the next line
+
+```{python}
+(df
+ .filter(['carat', 'color'])
+ .query('color == "E"')
+ .head(3))
+```
+
+EXAMPLE 2:
+
+```{R}
+# dplyr
+diamonds %>%
+  select(starts_with('c')) %>%
+  filter(cut %in% c('Ideal', 'Premium')) %>%
+  group_by(cut, color, clarity) %>%
+  summarize(avgcarat = mean(carat, na.rm=TRUE),
+            n = n()) %>%
+  arrange(desc(avgcarat)) %>%
+  head()
+```
+
+Lets write this in pandas.
+
+```{python}
+(df.
+    filter(regex='^c').
+    query("cut in ['Ideal', 'Premium']").
+    groupby(['cut', 'color', 'clarity']).
+    agg(['mean', 'size']).
+    sort_values(by = ('carat', 'mean'), ascending = False).
+    head()) 
+```
+
+## pivoting
+
+-   tidyr ---\> pandas
+
+-   gather/pivot_longer ---\> melt
+
+-   spread/pivot_wider ---\> pivot
