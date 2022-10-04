@@ -1,0 +1,216 @@
+---
+title: "Data Analysis in Python"
+jupyter: python3
+format: 
+    html:
+      theme: 
+        light: united
+        dark: darkly
+editor: visual
+chunk_output_type: console
+fig-align: center
+always_allow_html: true
+toc: true
+toc-location: right
+number-sections: true
+page-layout: article
+code-overflow: scroll
+code-line-numbers: false
+code-copy: true
+execute:
+  echo: true
+  warning: false
+  eval: true
+  output: true
+  error: false
+  freeze: true
+  cache: false
+---
+
+## libraries
+
+```{python}
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn
+import scipy
+import statsmodels
+```
+
+## data
+
+```{python}
+remote = 'https://raw.githubusercontent.com/'
+account = 'turalsadigov/'
+file = 'MATH_254/main/data/county.csv'
+url = remote + account + file
+county = pd.read_csv(url)
+county.head()
+```
+
+```{python}
+county.shape
+```
+
+```{python}
+county.info
+```
+
+```{python}
+county.describe()
+```
+
+```{python}
+corr = county.corr()
+```
+
+```{python}
+fig = plt.figure(figsize=(5,5))
+plt.matshow(corr, cmap='RdBu', fignum=fig.number)
+plt.xticks(range(len(corr.columns)), corr.columns, rotation='vertical');
+plt.yticks(range(len(corr.columns)), corr.columns);
+```
+
+## extract a column and find sumamry statistics
+
+```{python}
+county['poverty']
+
+```
+
+```{python}
+county['poverty'].mean()
+
+```
+
+```{python}
+county['poverty'].median()
+
+```
+
+```{python}
+county['poverty'].std()
+
+```
+
+```{python}
+county['poverty'].var()
+```
+
+## visual summaries
+
+```{python}
+(county.
+    filter(['poverty']).
+    plot(kind = 'hist'))
+```
+
+```{python}
+(county.
+    filter(['poverty']).
+    plot(kind = 'box'))
+```
+
+```{python}
+(county.
+    filter(['poverty']).
+    plot(kind = 'kde'))
+```
+
+Counting/bar plots
+
+```{python}
+(county.
+    filter(['metro']).
+    value_counts())
+```
+
+```{python}
+(county.
+    filter(['metro']).
+    value_counts().
+    plot(kind = 'bar'))
+```
+
+```{python}
+(county.
+    filter(['metro']).
+    value_counts().
+    plot(kind = 'pie'))
+```
+
+## scatterplots
+
+```{python}
+(county.
+  plot(kind='scatter', 
+      x='unemployment_rate', 
+      y='poverty', 
+      figsize=(5,5)))
+```
+
+## side by side boxplots
+
+```{python}
+(county.
+    filter(['poverty', 'metro']).
+    boxplot(by='metro', 
+            figsize=(6,4)))
+```
+
+## statistical summaries
+
+`describe` ignores non-numerical variables when look at together with numerical variables.
+
+```{python}
+(county.
+    filter(['poverty', 'unemployment_rate', 'metro']).
+    describe())
+```
+
+```{python}
+(county.
+    filter(['metro']).
+    describe())
+```
+
+## 'Mutate'/Assign new variables
+
+```{python}
+import math
+(county.
+   filter(['poverty']).
+   query('poverty < 3').
+   assign(new_variable = (county.poverty)**2))
+```
+
+## 'Filter'/query rows
+
+```{python}
+(county.
+    query('metro == "yes"').
+    describe())
+```
+
+```{python}
+(county.
+   query('poverty < 3 and unemployment_rate < 3 and metro == "yes"').
+   filter(['name', 'poverty', 'unemployment_rate', 'metro']))
+```
+
+## 'arrange'/sort values
+
+```{python}
+(county. 
+    filter(['poverty']).
+    sort_values(by = 'poverty', ascending=False))
+```
+
+## conditioning
+
+```{python}
+(county.
+    query('pop2000 > 300000').
+    mean())
+```
