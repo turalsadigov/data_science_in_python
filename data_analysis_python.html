@@ -119,6 +119,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#filterquery-rows" id="toc-filterquery-rows" class="nav-link" data-scroll-target="#filterquery-rows"> <span class="header-section-number">9</span> ‘Filter’/query rows</a></li>
   <li><a href="#arrangesort-values" id="toc-arrangesort-values" class="nav-link" data-scroll-target="#arrangesort-values"> <span class="header-section-number">10</span> ‘arrange’/sort values</a></li>
   <li><a href="#conditioning" id="toc-conditioning" class="nav-link" data-scroll-target="#conditioning"> <span class="header-section-number">11</span> conditioning</a></li>
+  <li><a href="#style" id="toc-style" class="nav-link" data-scroll-target="#style"> <span class="header-section-number">12</span> style</a></li>
   </ul>
 </nav>
 </div>
@@ -160,7 +161,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> remote <span class="op">+</span> account <span class="op">+</span> <span class="bu">file</span></span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>county <span class="op">=</span> pd.read_csv(url)</span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>county.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="2">
+<div class="cell-output cell-output-display" data-execution_count="147">
 
 <div>
 
@@ -283,13 +284,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>county.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="3">
+<div class="cell-output cell-output-display" data-execution_count="148">
 <pre><code>(3142, 15)</code></pre>
 </div>
 </div>
 <div class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>county.info</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="4">
+<div class="cell-output cell-output-display" data-execution_count="149">
 <pre><code>&lt;bound method DataFrame.info of                    name    state   pop2000  pop2010   pop2017  pop_change  \
 0        Autauga County  Alabama   43671.0    54571   55504.0        1.48   
 1        Baldwin County  Alabama  140415.0   182265  212628.0        9.19   
@@ -334,7 +335,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>county.describe()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="5">
+<div class="cell-output cell-output-display" data-execution_count="150">
 
 <div>
 
@@ -481,7 +482,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2 data-number="3" class="anchored" data-anchor-id="extract-a-column-and-find-summary-statistics"><span class="header-section-number">3</span> extract a column and find summary statistics</h2>
 <div class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>county[<span class="st">'poverty'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="8">
+<div class="cell-output cell-output-display" data-execution_count="153">
 <pre><code>0       13.7
 1       11.8
 2       27.2
@@ -498,25 +499,25 @@ Name: poverty, Length: 3142, dtype: float64</code></pre>
 </div>
 <div class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>county[<span class="st">'poverty'</span>].mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="9">
+<div class="cell-output cell-output-display" data-execution_count="154">
 <pre><code>15.968853503184713</code></pre>
 </div>
 </div>
 <div class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>county[<span class="st">'poverty'</span>].median()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="10">
+<div class="cell-output cell-output-display" data-execution_count="155">
 <pre><code>15.2</code></pre>
 </div>
 </div>
 <div class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>county[<span class="st">'poverty'</span>].std()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="11">
+<div class="cell-output cell-output-display" data-execution_count="156">
 <pre><code>6.515682404338445</code></pre>
 </div>
 </div>
 <div class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>county[<span class="st">'poverty'</span>].var()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="12">
+<div class="cell-output cell-output-display" data-execution_count="157">
 <pre><code>42.45411719420563</code></pre>
 </div>
 </div>
@@ -527,7 +528,7 @@ Name: poverty, Length: 3142, dtype: float64</code></pre>
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>(county.</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">filter</span>([<span class="st">'poverty'</span>]).</span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>    plot(kind <span class="op">=</span> <span class="st">'hist'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="13">
+<div class="cell-output cell-output-display" data-execution_count="158">
 <pre><code>&lt;AxesSubplot: ylabel='Frequency'&gt;</code></pre>
 </div>
 <div class="cell-output cell-output-display">
@@ -538,7 +539,7 @@ Name: poverty, Length: 3142, dtype: float64</code></pre>
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>(county.</span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">filter</span>([<span class="st">'poverty'</span>]).</span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>    plot(kind <span class="op">=</span> <span class="st">'box'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="14">
+<div class="cell-output cell-output-display" data-execution_count="159">
 <pre><code>&lt;AxesSubplot: &gt;</code></pre>
 </div>
 <div class="cell-output cell-output-display">
@@ -549,7 +550,7 @@ Name: poverty, Length: 3142, dtype: float64</code></pre>
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>(county.</span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">filter</span>([<span class="st">'poverty'</span>]).</span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>    plot(kind <span class="op">=</span> <span class="st">'kde'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="15">
+<div class="cell-output cell-output-display" data-execution_count="160">
 <pre><code>&lt;AxesSubplot: ylabel='Density'&gt;</code></pre>
 </div>
 <div class="cell-output cell-output-display">
@@ -561,7 +562,7 @@ Name: poverty, Length: 3142, dtype: float64</code></pre>
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>(county.</span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">filter</span>([<span class="st">'metro'</span>]).</span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>    value_counts())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="16">
+<div class="cell-output cell-output-display" data-execution_count="161">
 <pre><code>metro
 no       1974
 yes      1165
@@ -573,7 +574,7 @@ dtype: int64</code></pre>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">filter</span>([<span class="st">'metro'</span>]).</span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>    value_counts().</span>
 <span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>    plot(kind <span class="op">=</span> <span class="st">'bar'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="17">
+<div class="cell-output cell-output-display" data-execution_count="162">
 <pre><code>&lt;AxesSubplot: xlabel='metro'&gt;</code></pre>
 </div>
 <div class="cell-output cell-output-display">
@@ -585,7 +586,7 @@ dtype: int64</code></pre>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">filter</span>([<span class="st">'metro'</span>]).</span>
 <span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>    value_counts().</span>
 <span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>    plot(kind <span class="op">=</span> <span class="st">'pie'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="18">
+<div class="cell-output cell-output-display" data-execution_count="163">
 <pre><code>&lt;AxesSubplot: &gt;</code></pre>
 </div>
 <div class="cell-output cell-output-display">
@@ -601,7 +602,7 @@ dtype: int64</code></pre>
 <span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>      x<span class="op">=</span><span class="st">'unemployment_rate'</span>, </span>
 <span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>      y<span class="op">=</span><span class="st">'poverty'</span>, </span>
 <span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>      figsize<span class="op">=</span>(<span class="dv">5</span>,<span class="dv">5</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="19">
+<div class="cell-output cell-output-display" data-execution_count="164">
 <pre><code>&lt;AxesSubplot: xlabel='unemployment_rate', ylabel='poverty'&gt;</code></pre>
 </div>
 <div class="cell-output cell-output-display">
@@ -616,7 +617,7 @@ dtype: int64</code></pre>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">filter</span>([<span class="st">'poverty'</span>, <span class="st">'metro'</span>]).</span>
 <span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>    boxplot(by<span class="op">=</span><span class="st">'metro'</span>, </span>
 <span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>            figsize<span class="op">=</span>(<span class="dv">6</span>,<span class="dv">4</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="20">
+<div class="cell-output cell-output-display" data-execution_count="165">
 <pre><code>&lt;AxesSubplot: title={'center': 'poverty'}, xlabel='[metro]'&gt;</code></pre>
 </div>
 <div class="cell-output cell-output-display">
@@ -631,7 +632,7 @@ dtype: int64</code></pre>
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>(county.</span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">filter</span>([<span class="st">'poverty'</span>, <span class="st">'unemployment_rate'</span>, <span class="st">'metro'</span>]).</span>
 <span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>    describe())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="21">
+<div class="cell-output cell-output-display" data-execution_count="166">
 
 <div>
 
@@ -693,7 +694,7 @@ dtype: int64</code></pre>
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>(county.</span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">filter</span>([<span class="st">'metro'</span>]).</span>
 <span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>    describe())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="22">
+<div class="cell-output cell-output-display" data-execution_count="167">
 
 <div>
 
@@ -735,7 +736,7 @@ dtype: int64</code></pre>
 <span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>   <span class="bu">filter</span>([<span class="st">'poverty'</span>]).</span>
 <span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>   query(<span class="st">'poverty &lt; 3'</span>).</span>
 <span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>   assign(new_variable <span class="op">=</span> (county.poverty)<span class="op">**</span><span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="23">
+<div class="cell-output cell-output-display" data-execution_count="168">
 
 <div>
 
@@ -780,7 +781,7 @@ dtype: int64</code></pre>
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>(county.</span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>    query(<span class="st">'metro == "yes"'</span>).</span>
 <span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>    describe())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="24">
+<div class="cell-output cell-output-display" data-execution_count="169">
 
 <div>
 
@@ -914,7 +915,7 @@ dtype: int64</code></pre>
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>(county.</span>
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>   query(<span class="st">'poverty &lt; 3 and unemployment_rate &lt; 3 and metro == "yes"'</span>).</span>
 <span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>   <span class="bu">filter</span>([<span class="st">'name'</span>, <span class="st">'poverty'</span>, <span class="st">'unemployment_rate'</span>, <span class="st">'metro'</span>]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="25">
+<div class="cell-output cell-output-display" data-execution_count="170">
 
 <div>
 
@@ -952,10 +953,10 @@ dtype: int64</code></pre>
 <section id="arrangesort-values" class="level2" data-number="10">
 <h2 data-number="10" class="anchored" data-anchor-id="arrangesort-values"><span class="header-section-number">10</span> ‘arrange’/sort values</h2>
 <div class="cell" data-execution_count="26">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>(county. </span>
-<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">filter</span>([<span class="st">'poverty'</span>]).</span>
-<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>    sort_values(by <span class="op">=</span> <span class="st">'poverty'</span>, ascending<span class="op">=</span><span class="va">False</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>county. <span class="op">\</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">filter</span>([<span class="st">'poverty'</span>]).<span class="op">\</span></span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>    sort_values(by <span class="op">=</span> <span class="st">'poverty'</span>, ascending<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="171">
 
 <div>
 
@@ -1024,7 +1025,7 @@ dtype: int64</code></pre>
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>(county.</span>
 <span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>    query(<span class="st">'pop2000 &gt; 300000'</span>).</span>
 <span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>    mean())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="27">
+<div class="cell-output cell-output-display" data-execution_count="172">
 <pre><code>pop2000              828101.234043
 pop2010              903916.079787
 pop2017              965904.845745
@@ -1036,6 +1037,150 @@ unemployment_rate         4.361489
 per_capita_income     33159.612766
 median_hh_income      64176.585106
 dtype: float64</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="28">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>county.<span class="op">\</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>    query(<span class="st">'pop2000 &gt; 300000'</span>).<span class="op">\</span></span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>    mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="173">
+<pre><code>pop2000              828101.234043
+pop2010              903916.079787
+pop2017              965904.845745
+pop_change                3.431755
+poverty                  13.874468
+homeownership            64.800000
+multi_unit               30.551596
+unemployment_rate         4.361489
+per_capita_income     33159.612766
+median_hh_income      64176.585106
+dtype: float64</code></pre>
+</div>
+</div>
+</section>
+<section id="style" class="level2" data-number="12">
+<h2 data-number="12" class="anchored" data-anchor-id="style"><span class="header-section-number">12</span> style</h2>
+<div class="cell" data-execution_count="29">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>county.<span class="op">\</span></span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">filter</span>([<span class="st">'poverty'</span>, <span class="st">'metro'</span>]). <span class="op">\</span></span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>    sort_values(<span class="st">'poverty'</span>, ascending <span class="op">=</span> <span class="va">False</span>).<span class="op">\</span></span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>    head(<span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="174">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>poverty</th>
+      <th>metro</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2421</th>
+      <td>52.0</td>
+      <td>no</td>
+    </tr>
+    <tr>
+      <th>1130</th>
+      <td>48.2</td>
+      <td>no</td>
+    </tr>
+    <tr>
+      <th>2376</th>
+      <td>47.9</td>
+      <td>no</td>
+    </tr>
+    <tr>
+      <th>1432</th>
+      <td>47.0</td>
+      <td>no</td>
+    </tr>
+    <tr>
+      <th>1426</th>
+      <td>46.5</td>
+      <td>no</td>
+    </tr>
+    <tr>
+      <th>1411</th>
+      <td>45.9</td>
+      <td>no</td>
+    </tr>
+    <tr>
+      <th>2396</th>
+      <td>44.8</td>
+      <td>no</td>
+    </tr>
+    <tr>
+      <th>2427</th>
+      <td>43.1</td>
+      <td>no</td>
+    </tr>
+    <tr>
+      <th>2408</th>
+      <td>42.6</td>
+      <td>no</td>
+    </tr>
+    <tr>
+      <th>52</th>
+      <td>41.9</td>
+      <td>no</td>
+    </tr>
+    <tr>
+      <th>2546</th>
+      <td>41.5</td>
+      <td>no</td>
+    </tr>
+    <tr>
+      <th>514</th>
+      <td>41.5</td>
+      <td>no</td>
+    </tr>
+    <tr>
+      <th>416</th>
+      <td>41.4</td>
+      <td>no</td>
+    </tr>
+    <tr>
+      <th>1066</th>
+      <td>41.0</td>
+      <td>no</td>
+    </tr>
+    <tr>
+      <th>1427</th>
+      <td>40.5</td>
+      <td>no</td>
+    </tr>
+    <tr>
+      <th>2369</th>
+      <td>40.5</td>
+      <td>no</td>
+    </tr>
+    <tr>
+      <th>1442</th>
+      <td>40.3</td>
+      <td>no</td>
+    </tr>
+    <tr>
+      <th>1428</th>
+      <td>40.3</td>
+      <td>no</td>
+    </tr>
+    <tr>
+      <th>1018</th>
+      <td>39.5</td>
+      <td>no</td>
+    </tr>
+    <tr>
+      <th>418</th>
+      <td>39.5</td>
+      <td>no</td>
+    </tr>
+  </tbody>
+</table>
+</div>
 </div>
 </div>
 </section>

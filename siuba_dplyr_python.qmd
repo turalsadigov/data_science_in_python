@@ -1,0 +1,77 @@
+---
+title: "siuba ~ dplyr in python"
+jupyter: python3
+format: 
+    html:
+      theme: 
+        light: united
+        dark: darkly
+editor: visual
+chunk_output_type: console
+fig-align: center
+always_allow_html: true
+toc: true
+toc-location: right
+number-sections: true
+page-layout: article
+code-overflow: scroll
+code-line-numbers: false
+code-copy: true
+execute:
+  echo: true
+  warning: false
+  eval: true
+  output: true
+  error: false
+  freeze: true
+  cache: false
+---
+
+## libraries
+
+```{python}
+import pandas as pd
+import numpy as np
+from siuba import _
+from siuba.dply.verbs import group_by, select, filter
+from siuba.dply.verbs import summarize, ungroup, mutate
+```
+
+## data
+
+```{python}
+remote = 'https://raw.githubusercontent.com/'
+account = 'turalsadigov/'
+file = 'MATH_254/main/data/county.csv'
+url = remote + account + file
+county = pd.read_csv(url)
+county.head()
+```
+
+```{python}
+type(county)
+```
+
+## piping in python: \>\>
+
+```{python}
+county >> \
+   select(_.poverty, _.unemployment_rate, _.metro) >> \
+   group_by(_.metro) >> \
+   summarize(avg_pov = np.mean(_.poverty),
+             avg_unem = np.mean(_.unemployment_rate))
+```
+
+## demean poverty
+
+in `dplyr`
+
+```{r}
+library(stats2data)
+county %>% 
+  select(poverty, unemployment_rate, metro) %>% 
+  group_by(metro) %>% 
+  mutate(avg_pov = mean(poverty)) %>% 
+  ungroup() %>% 
+  mutate(poverty = poverty - avg_pov)
+```

@@ -202,9 +202,9 @@ import math
 ## 'arrange'/sort values
 
 ```{python}
-(county. 
-    filter(['poverty']).
-    sort_values(by = 'poverty', ascending=False))
+county. \
+    filter(['poverty']).\
+    sort_values(by = 'poverty', ascending=False)
 ```
 
 ## conditioning
@@ -213,4 +213,17 @@ import math
 (county.
     query('pop2000 > 300000').
     mean())
+```
+
+```{python}
+county.\
+    query('pop2000 > 300000').\
+    mean()
+```
+
+```{python}
+county.\
+    filter(['poverty', 'metro']). \
+    sort_values('poverty', ascending = False).\
+    head(20)
 ```
