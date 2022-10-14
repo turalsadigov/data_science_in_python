@@ -1,0 +1,47 @@
+---
+title: "Unsupervised Learning with scikit-learn"
+format: html
+jupyter: python3
+---
+
+## libraries
+
+```{python}
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+```
+
+
+## common routines
+
+```{python}
+from sklearn.cluster import KMeans
+from scipy.cluster.hierarchy import linkage, dendrogram
+from scipy.cluster.hierarchy import fcluster
+from sklearn.manifold import TSNE
+from sklearn.decomposition import PCA
+from sklearn.decomposition import TruncatedSVD
+from sklearn.decomposition import NMF
+```
+
+
+## data
+
+```{python}
+remote = 'https://raw.githubusercontent.com/'
+account = 'turalsadigov/'
+folder = 'MATH_254/main/data/'
+file = 'county.csv'
+url = remote + account + folder + file
+county = pd.read_csv(url)
+county.head()
+```
+
+## get variances of each numerical column
+
+```{python}
+county_num = county.select_dtypes(include=np.number)
+county_num.var()
+```
+
