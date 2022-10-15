@@ -1,0 +1,70 @@
+---
+title: "Linear Classifiers in Python"
+author: "Tural Sadigov"
+format: html
+editor: visual
+jupyter: python3
+---
+
+## libraries
+
+```{python}
+import numpy as np
+import pandas as pd
+```
+
+
+## routines
+
+```{python}
+from sklearn.linear_model import SGDClassifier
+SGDClassifier(loss = 'log_loss') # logistic regression
+SGDClassifier(loss = 'hinge')# SVM
+```
+
+
+## data example
+
+```{python}
+import sklearn.datasets
+wine = sklearn.datasets.load_wine()
+wine_features_df = pd.DataFrame(wine.data)
+```
+
+```{python}
+pd.DataFrame(wine.target)
+```
+
+
+## modeling
+
+```{python}
+from sklearn import datasets
+from sklearn.linear_model import LogisticRegression
+from sklearn.svm import SVC
+from sklearn.model_selection import train_test_split
+digits = datasets.load_digits()
+X_train, X_test, y_train, y_test = train_test_split(digits.data, digits.target)
+
+# Apply logistic regression and print scores
+lr = LogisticRegression()
+lr.fit(X_train, y_train)
+print(lr.score(X_train, y_train))
+print(lr.score(X_test, y_test))
+
+# Apply SVM and print scores
+svm = SVC()
+svm.fit(X_train, y_train)
+print(svm.score(X_train, y_train))
+print(svm.score(X_test, y_test))
+```
+
+## loss minimization routine example
+
+```{python}
+from scipy.optimize import minimize
+minimize(np.square, -5).x
+minimize(np.square, 2).x
+```
+
+

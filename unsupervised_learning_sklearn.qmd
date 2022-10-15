@@ -23,6 +23,9 @@ from sklearn.manifold import TSNE
 from sklearn.decomposition import PCA
 from sklearn.decomposition import TruncatedSVD
 from sklearn.decomposition import NMF
+from sklearn.preprocessing import Normalizer
+from sklearn.preprocessing import MaxAbsScaler
+from sklearn.preprocessing import MinMaxScaler
 ```
 
 
