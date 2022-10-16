@@ -35,14 +35,15 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.ensemble import AdaBoostClassifier
 from sklearn.ensemble import AdaBoostRegressor
-
+from sklearn.ensemble import GradientBoostingClassifier
+from sklearn.ensemble import GradientBoostingRegressor
 ```
 
 #### Decision Tree hyperparameters
 
 -   max_depth = any natural number c
 
--   riterion = 'gini' or 'entropy'
+-   criterion = 'gini' or 'entropy'
 
 -   min_samples_leaf = between 0 and 1, leaf contains at least this percent
 
@@ -54,7 +55,17 @@ from sklearn.ensemble import AdaBoostRegressor
 
 -   oob_score = True or False
 
--   n_jobs = -1 (use all cores for parallelization)
+-   n_jobs = -1 (use all cores for parallel computing)
+
+#### Stochastic Gradient Boosting
+
+-   max_depth (depth of the submodel tree)
+
+-   n_estimators (number of trees or submodels)
+
+-   subsample (percentage of data to be used)
+
+-   max_features (percentage of features to be used)
 
 ## collect data
 
@@ -98,3 +109,53 @@ accuracy_score(y_test, y_pred)
 ```{python}
 print(classification_report(y_test, y_pred))
 ```
+
+## Tuning hyperparameters
+
+```{python}
+from sklearn.model_selection import GridSearchCV
+```
+
+-   grid search
+
+-   random search
+
+-   Bayesian optimization
+
+```{python}
+dt = DecisionTreeClassifier()
+
+for key, value in dt.get_params().items():
+  print(key, ' : ', value)
+```
+
+```{python}
+rf = RandomForestRegressor(random_state = 1)
+
+for key, value in rf.get_params().items():
+  print(key, ' : ', value)
+```
+
+#### GridSearchCV hyperparamaters
+
+-   estimator (model object initiated)
+
+-   param_grid (dictionary of values)
+
+-   cv (number of folds)
+
+-   scoring (loss)
+
+-   verbose
+
+-   n_jobs = -1 (parallel computing)
+
+Extractions:
+
+-   best_params\_
+
+-   best_estimator\_
+
+-   
+
+####  
