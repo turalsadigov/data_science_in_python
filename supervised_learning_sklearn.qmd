@@ -133,6 +133,7 @@ Note: train-test split before imputation to prevent '`data leakage`'.
 ```{python}
 # get info on datay
 county.info()
+county = county.loc[:, county.columns != 'smoking_ban'].dropna()
 # select categorical variables
 X_cat = county.select_dtypes(include=['object']).drop('name', axis = 1).values
 # select numerical variables (except target: median household income)
@@ -162,6 +163,13 @@ X_test_num = imp_num.transform(X_test_num)
 X_train = np.append(X_train_num, X_train_cat, axis = 1)
 X_test = np.append(X_test_num, X_test_cat, axis = 1)
 ```
+
+
+```{python}
+X_train = pd.get_dummies(pd.DataFrame(X_train))
+X_test = pd.get_dummies(pd.DataFrame(X_test))
+```
+
 
 Lets fit a model
 

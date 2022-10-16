@@ -1,0 +1,100 @@
+---
+title: Tree Based Models in python
+author:
+  - name: Tural Sadigov
+    affiliation:
+      - Hamilton College
+affilitions: Hamilton College
+format: html
+editor: visual
+jupyter: python3
+title-block-banner: true
+---
+
+## general use libraries
+
+```{python}
+import numpy as np
+import pandas as pd
+```
+
+## tree imports
+
+```{python}
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.tree import DecisionTreeRegressor
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import accuracy_score
+from sklearn.metrics import confusion_matrix
+from sklearn.metrics import classification_report
+from sklearn.model_selection import cross_val_score
+from sklearn.ensemble import VotingClassifier
+from sklearn.ensemble import BaggingClassifier
+from sklearn.ensemble import BaggingRegressor
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.ensemble import AdaBoostClassifier
+from sklearn.ensemble import AdaBoostRegressor
+
+```
+
+#### Decision Tree hyperparameters
+
+-   max_depth = any natural number c
+
+-   riterion = 'gini' or 'entropy'
+
+-   min_samples_leaf = between 0 and 1, leaf contains at least this percent
+
+#### BaggingClassifier hyperparameters
+
+-   base_estimator = some initiated decision tree
+
+-   n_estimators = number of trees
+
+-   oob_score = True or False
+
+-   n_jobs = -1 (use all cores for parallelization)
+
+## collect data
+
+```{python}
+remote = 'https://raw.githubusercontent.com/'
+account = 'turalsadigov/'
+folder = 'MATH_254/main/data/'
+file = 'county.csv'
+url = remote + account + folder + file
+county = pd.read_csv(url)
+county.head()
+```
+
+## decision tree model
+
+```{python}
+df = county.loc[:, county.columns != 'smoking_ban'].dropna()
+X = df.loc[:, df.columns != 'metro']
+X = X.loc[:, X.columns != 'name']
+X = pd.get_dummies(X)
+y = df['metro']
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, stratify = y, random_state = 2022 )
+
+dt = DecisionTreeClassifier(criterion = 'gini', random_state = 1)
+dt.fit(X_train, y_train)
+y_pred = dt.predict(X_test)
+```
+
+```{python}
+pd.DataFrame({'observed metro': y_test,'predicted metro': y_pred})
+```
+
+```{python}
+confusion_matrix(y_test, y_pred)
+```
+
+```{python}
+accuracy_score(y_test, y_pred)
+```
+
+```{python}
+print(classification_report(y_test, y_pred))
+```
